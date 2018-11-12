@@ -1,6 +1,16 @@
 (function listsANoteInHtml(){
-  var listview = new Listview(List)
+  var list = new List
+  list.newNote("New Note!")
+  var listview = new Listview(list)
+  assert.isTrue(listview.render() === "<ul><li><div>New Note!</div></li></ul>")
 
-  assert.isTrue(listview.render() === "<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: seltzer</div></li></ul>")
+})(this);
 
-})(this)
+(function listsTwoNotesInHtml(){
+  var list = new List
+  list.newNote("New Note!")
+  list.newNote("Second Note!")
+  var listview = new Listview(list)
+  assert.isTrue(listview.render() === "<ul><li><div>New Note!</div></li><li><div>Second Note!</div></li></ul>")
+
+})(this);
